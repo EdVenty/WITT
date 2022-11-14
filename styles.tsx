@@ -5,7 +5,10 @@ export const styles = StyleSheet.create({
     cardTitle: {
         color: '#ffffff',
         fontWeight: 'bold',
-        fontSize: 25
+        fontSize: 25,
+        flexShrink: 1, 
+        flexWrap: 'wrap',
+        width: 160
     },
     cardSubtitle: {
         color: '#ffffff'
@@ -27,8 +30,12 @@ export const styles = StyleSheet.create({
         color: '#ffffff',
         backgroundColor: '#5e4e8b',
         padding: 20,
-        borderRadius: 10,
-        margin: 10
+        borderRadius: 14,
+        margin: 2,
+        width: 130,
+        height: 130,
+        textAlign: 'center',
+        textAlignVertical: 'center'
     },
     scroll: {
         backgroundColor: '#2E1969',
@@ -83,10 +90,12 @@ export const styles = StyleSheet.create({
         borderWidth: 3,
         borderRadius: 100,
         paddingVertical: 10,
-        paddingHorizontal: 15
+        paddingHorizontal: 15,
+        marginBottom: 10
     },
     searchText: {
-        color: '#7e788f'
+        color: '#7e788f',
+        flex: 300
     },
     searchTextContainer: {
         justifyContent: 'space-around',
@@ -104,11 +113,16 @@ export const styles = StyleSheet.create({
         backgroundColor: '#5e4e8b',
         padding: 10,
         borderTopLeftRadius: 10,
-        borderBottomLeftRadius: 10
+        borderBottomLeftRadius: 10,
+        width: 50,
+        height: 50,
+        textAlign: 'center',
+        textAlignVertical: 'center'
     },
     itemText: {
         color: 'white',
-        marginLeft: 10
+        marginLeft: 10,
+        width: 160
     },
     vertical: {
         justifyContent: 'space-around',
@@ -128,6 +142,19 @@ export const styles = StyleSheet.create({
     },
     itemsListSpacer: {
         height: 10
+    },
+    itemsAddButton: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        padding: 5
+    },
+    itemsAddButtonText: {
+        color: '#2E1969'
+    },
+    itemsNoItems: {
+        justifyContent: 'center',
+        flexDirection: 'row',
+        color: '#2E1969'
     },
     iconSelector: {
         backgroundColor: '#f5f5f5',
@@ -175,5 +202,47 @@ export const styles = StyleSheet.create({
     },
     createText: {
         fontSize: 18
+    },
+    bigIconContainer: {
+        backgroundColor: '#2E1969',
+        padding: 10,
+        borderRadius: 10,
+        width: 130,
+        height: 130,
+        justifyContent: 'center',
+        textAlign: 'center'
+    },
+    bigIcon: {
+        color: '#ffffff',
+        textAlign: 'center'
+    },
+    itemScreenTopContainer: {
+        flexDirection: 'row',
+        marginTop: 20,
+        marginHorizontal: 30,
+        marginBottom: 20
+    },
+    itemScreenView: {
+    },
+    itemName: {
+        fontWeight: 'bold',
+        fontSize: 20,
+        flexShrink: 1,
+        width: 180
+    },
+    itemScreenTextContainer: {
+        marginLeft: 20
+    },
+    itemScreenDeleteButtonContainer: {
+        marginTop: 20,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginHorizontal: 30
+    },
+    itemScreenDeleteButtonText: {
+        color: 'red'
+    },
+    searchResultsContainer: {
+        marginBottom: 10
     }
 });

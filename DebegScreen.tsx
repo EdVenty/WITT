@@ -4,51 +4,24 @@ import { IconSelector } from './IconSelector';
 import { styles } from './styles';
 import { Tab } from './Tab';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useDispatch } from 'react-redux';
 
 export function DebugScreen({ navigation }) {
-    const [ name, setName ] = React.useState("");
-    const [ icon, setIcon ] = React.useState("question");
-
-    const save = async () => {
-        console.log("Saving room data.");
-        const id = Number(await AsyncStorage.getItem("lastRoomsId") ?? 0) + 1;
-        console.log(`New id: ${id}.`)
-        const rooms = JSON.parse(await AsyncStorage.getItem("rooms"));
-        await AsyncStorage.setItem("rooms", JSON.stringify([...(rooms ?? []), {id, name, icon}]));
-        await AsyncStorage.setItem("lastRoomsId", id.toString());
-        console.log("Saved room data.");
-    }
-
-    const clear = async () => {
-        console.log("Clearing room data.");
-        const rooms = JSON.parse(await AsyncStorage.getItem("rooms"));
-        console.log(rooms);
-        await AsyncStorage.setItem("rooms", JSON.stringify(null));
-        console.log("Cleared room data.");
-    }
-
-    const clearId = async () => {
-        console.log("Clearing room id data.");
-        const id = Number(await AsyncStorage.getItem("lastRoomsId") ?? 0);
-        console.log(id);
-         await AsyncStorage.setItem("lastRoomsId", (0).toString());
-        console.log("Cleared room id data.");
-    }
-
+    const dispatch = useDispatch();
 
     return <View style={{ flex: 1, marginTop: 60 }}>
         <View>
             <View style={styles.createTextContainer}>
                 <Text style={styles.createText}>Дебаг</Text>
             </View>
-            <TouchableOpacity style={styles.createButton} onPress={clear}>
-                <Text style={styles.createButtonText}>Очистить хранилище</Text>
+            <TouchableOpacity style={styles.createButton} onPress={() => dispatch({type: 'rooms/clear'})}>
+                <Text style={styles.createButtonText}>Очистить комнаты</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.createButton} onPress={clearId}>
-                <Text style={styles.createButtonText}>Очистить айдишники</Text>
+            <TouchableOpacity style={styles.createButton} onPress={() => dispatch({type: 'boxes/clear'})}>
+                <Text style={styles.createButtonText}>Очистить ящики</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.createButton} onPress={save}>
-                <Text style={styles.createButtonText}>Создать</Text>
+            <TouchableOpacity style={styles.createButton} onPress={() => dispatch({type: 'items/clear'})}>
+                <Text style={styles.createButtonText}>Очистить предметы</Text>
             </TouchableOpacity>
         </View>
     </View>

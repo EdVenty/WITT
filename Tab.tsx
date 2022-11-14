@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, TouchableHighlight } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
 
 interface TabProps{
@@ -15,8 +15,8 @@ export function Tab({
     return <View style={styles.tab}>
         <Text style={styles.tabText}>{name}</Text>
         {children}
-        {buttonText ? <TouchableHighlight style={styles.addButton} onPress={buttonCallback}>
+        {buttonText ? <TouchableOpacity style={styles.addButton} onPress={buttonCallback}>
             <Text style={styles.addButtonText}>{buttonText}</Text>
-        </TouchableHighlight> : null}
+        </TouchableOpacity> : null}
     </View>
 }
